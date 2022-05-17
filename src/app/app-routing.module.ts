@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 
 const routes: Routes = [
-  { path: 'welcome', loadChildren: () => import('./welcome-page/welcome-page.module').then(m => m.WelcomePageModule) },
+  { path: 'welcome', component: WelcomePageComponent },
   { path: '', redirectTo: '/welcome', pathMatch: 'full'}
 ];
 
