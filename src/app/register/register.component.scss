@@ -1,0 +1,61 @@
+.register {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Oleo Script', cursive;
+  &-main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    &-header {
+      position: relative;
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      img.arrow {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 1;
+        width: 1.5rem;
+        cursor: pointer;
+      }
+      img.book {
+        position: absolute;
+        top: 2rem;
+        z-index: 1;
+      }
+    }
+    &-body {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      background-color: #EDF6F6;
+      border-top-right-radius: 3rem;
+      border-top-left-radius: 3rem;
+      text-align: center;
+      &-sign {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1 {
+          font-weight: normal;
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+        img.google {
+          width: 5rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+    }
+  }
+}
+
+
+
+

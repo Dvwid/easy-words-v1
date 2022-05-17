@@ -4,7 +4,8 @@ import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: '', redirectTo: '/welcome', pathMatch: 'full'}
+  { path: '', redirectTo: '/welcome', pathMatch: 'full'},
+  { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) }
 ];
 
 @NgModule({

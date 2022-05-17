@@ -6,6 +6,7 @@ import {
   slideOutDownOnLeaveAnimation,
 } from 'angular-animations';
 import {AvailableLanguages} from "../dtos";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class WelcomePageComponent implements OnInit {
 
   languages: AvailableLanguages[] = [{name: 'en-flag', imageSrc: 'assets/svgs/en-flag.svg'}];
 
-  constructor() {
+  constructor(private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -44,10 +45,10 @@ export class WelcomePageComponent implements OnInit {
     this.selectedLanguage = language.name;
   }
 
-  goTo(route: string) {
+  redirect() {
     this.isWelcomeSectionVisible = false;
     setTimeout(() => {
-
-    })
+      this._router.navigate(['/register'])
+    }, 500)
   }
 }

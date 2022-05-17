@@ -1,11 +1,11 @@
 <div class="welcome">
   <app-background></app-background>
-  <img class="welcome-logo active" src="assets/svgs/logo.svg" alt="leafs2"
+  <img class="welcome-logo active" src="assets/images/logo.png" alt="logo"
        *ngIf="isLogoActive"
        [@enter-logo] [@leave-logo]/>
   <div class="welcome-main" *ngIf="isWelcomeSectionVisible" [@enter-main] [@leave-main]>
     <div class="welcome-main-logo">
-      <img src="assets/svgs/logo.svg" alt="leafs2"/>
+      <img src="assets/images/logo.png" alt="logo"/>
     </div>
     <div class="welcome-main-body">
       <div class="welcome-main-body-text">
@@ -26,7 +26,7 @@
       </div>
 
       <div class="welcome-main-body-signup">
-        <RoundedButton (click)="goTo('register')"
+        <RoundedButton (click)="redirect()"
                        width="18rem"
                        height="4rem"
                        text="Sign up">

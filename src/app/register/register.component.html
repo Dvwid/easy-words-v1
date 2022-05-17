@@ -1,0 +1,29 @@
+<div class="register">
+  <app-background></app-background>
+  <div class="register-main" *ngIf="isRegisterSectionVisible" [@enter-main] [@leave-main]>
+    <div class="register-main-header">
+      <img src="assets/svgs/left-arrow.svg"
+           routerLink="/welcome"
+           alt="arrow"
+           class="arrow"/>
+      <img src="assets/svgs/reading-book.svg"
+           alt="reading-book"
+           class="book"/>
+    </div>
+    <div class="register-main-body">
+      <div class="register-main-body-sign">
+        <h1 class="header">Sign up</h1>
+        <img class="google"
+             src="assets/svgs/google.svg"
+             alt="google"/>
+        <img class="line"
+             src="assets/images/line.png"
+             alt="line"/>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>
