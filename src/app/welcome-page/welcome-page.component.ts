@@ -48,7 +48,7 @@ export class WelcomePageComponent implements OnInit {
   redirect() {
     this.isWelcomeSectionVisible = false;
     setTimeout(() => {
-      this._router.navigate(['/register'])
+      this._router.navigateByUrl('/register')
     }, 500)
   }
 }
