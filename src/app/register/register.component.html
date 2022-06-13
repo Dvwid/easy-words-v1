@@ -1,6 +1,9 @@
 <div class="register">
   <app-background></app-background>
-  <div class="register-main" *ngIf="isRegisterSectionVisible" [@enter-main] [@leave-main]>
+  <div *ngIf="isRegisterSectionVisible"
+       [@enter-main]
+       [@leave-main]
+       class="register-main">
     <div class="register-main-header">
       <img src="assets/svgs/left-arrow.svg"
            routerLink="/welcome"
@@ -11,7 +14,8 @@
            class="book"/>
     </div>
     <div class="register-main-body">
-      <div class="register-main-body-sign">
+      <div *ngIf="!isRegistered"
+           class="register-main-body-sign">
         <h1 class="header">Sign up</h1>
         <img class="google"
              src="assets/svgs/google.svg"
@@ -20,19 +24,66 @@
              src="assets/images/line.png"
              alt="line"/>
       </div>
-      <form class="register-main-body-form">
-        <input placeholder="Name"/>
-        <input placeholder="Email"/>
-        <input placeholder="Password" type="password" />
-        <button>Sign up</button>
+      <form *ngIf="!isRegistered"
+            #form="ngForm"
+            class="register-main-body-form">
+        <div class="register-main-body-form-field">
+          <input [(ngModel)]="registerRequest.name"
+                 #name="ngModel"
+                 name="name"
+                 placeholder="Name"
+                 required/>
+          <app-validation [submitted]="form.submitted"
+                          [field]="name"
+                          text="Name is required!">
+          </app-validation>
+        </div>
+        <div class="register-main-body-form-field">
+          <input [(ngModel)]="registerRequest.email"
+                 #email="ngModel"
+                 name="email"
+                 placeholder="Email"
+                 required/>
+          <app-validation [submitted]="form.submitted"
+                          [field]="email"
+                          text="Email is required!">
+          </app-validation>
+        </div>
+        <div class="register-main-body-form-field">
+          <input [(ngModel)]="registerRequest.password"
+                 #password="ngModel"
+                 name="password"
+                 placeholder="Password"
+                 autocomplete="on"
+                 type="password"
+                 required/>
+          <app-validation [submitted]="form.submitted"
+                          [field]="password"
+                          text="Password is required!">
+          </app-validation>
+        </div>
+        <RoundedButton (click)="signUp()"
+                       width="18rem"
+                       height="4rem"
+                       text="Sign up">
+        </RoundedButton>
       </form>
-      <div class="register-main-body-footer">
+      <div *ngIf="!isRegistered"
+           class="register-main-body-footer">
         <p>Are you already registered?</p>
-        <span>Sign in</span>
+        <span routerLink="/login">Sign in</span>
+      </div>
+      <div *ngIf="isRegistered"
+           class="register-main-body-success">
+        <h1 class="header">Success</h1>
+        <p>You have been registered!</p>
+        <RoundedButton routerLink="/login"
+                       width="18rem"
+                       height="4rem"
+                       text="Login here">
+        </RoundedButton>
       </div>
 
     </div>
-
-
   </div>
 </div>

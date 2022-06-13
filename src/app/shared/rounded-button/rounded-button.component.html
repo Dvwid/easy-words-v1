@@ -1,3 +1,9 @@
-<button *ngIf="text" [ngStyle]="{'width': width, 'height': height}" class="rounded-button">
-  {{text}}
+<button *ngIf="text"
+        [ngStyle]="{'width': width, 'height': height}"
+        [disabled]="disabled"
+        class="rounded-button">
+  <span *ngIf="!isLoading">{{text}}</span>
+  <span *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </span>
 </button>

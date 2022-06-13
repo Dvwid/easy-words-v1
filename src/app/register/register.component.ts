@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
+import {RegisterRequest} from "../dtos";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -11,11 +13,21 @@ import {slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-a
   ]
 })
 export class RegisterComponent implements OnInit {
-  isRegisterSectionVisible = true;
 
-  constructor() { }
+  isRegisterSectionVisible = true;
+  isRegistered = false;
+  registerRequest = {} as RegisterRequest;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  signUp() {
+    this.auth.signUp(this.registerRequest).subscribe(() => this.isRegistered = true);
+  }
+
+  goToLogin() {
+
+  }
 }

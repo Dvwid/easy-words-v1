@@ -1,35 +1,51 @@
-import { TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {DebugElement} from "@angular/core";
+import {By} from "@angular/platform-browser";
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>
+  let de: DebugElement;
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+    TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      imports: [
+        RouterTestingModule
+      ]
     }).compileComponents();
-  });
+  })
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'EasyWords-v1'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('EasyWords-v1');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    de = fixture.debugElement;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('EasyWords-v1 app is running!');
-  });
+  })
+
+  it('Should create the app', () => {
+
+    expect(component).toBeTruthy();
+  })
+
+  it('should have the correct title', () => {
+    const title = "Easy Words";
+    expect(component.title).toEqual(title);
+  })
+
+  it('should render an updated title', ()=> {
+    // Arrange
+    const newTitle = 'Easy Words';
+    const titleElement = de.query(By.css('.title'))
+    // Act
+    component.title = newTitle;
+    fixture.detectChanges();
+    // Assert
+    expect(titleElement.nativeElement.innerText).toBe(newTitle);
+  })
 });
+
+

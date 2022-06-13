@@ -7,6 +7,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import {RoundedButtonModule} from "./shared/rounded-button/rounded-button.module";
 import {BackgroundModule} from "./shared/background/background.module";
+import {AuthService} from "./services/auth.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -19,9 +21,10 @@ import {BackgroundModule} from "./shared/background/background.module";
     AppRoutingModule,
     BrowserAnimationsModule,
     RoundedButtonModule,
-    BackgroundModule
+    BackgroundModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   exports: [],
   bootstrap: [AppComponent]
 })

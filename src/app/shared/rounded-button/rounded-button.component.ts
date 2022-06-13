@@ -10,5 +10,7 @@ export class RoundedButtonComponent {
   @Input() width: string;
   @Input() height: string;
   @Input() text: string;
+  @Input() disabled: boolean;
+  @Input() isLoading: boolean;
 
 }
