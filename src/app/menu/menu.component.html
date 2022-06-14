@@ -1,0 +1,72 @@
+<div class="menu">
+  <app-background></app-background>
+  <div class="menu-main" [@enter-main] [@leave-main]>
+
+    <div class="menu-main-header">
+      <img src="assets/images/logo.png" alt="logo"/>
+      <img *ngIf="user.avatar"
+           [src]="user.avatar"
+           alt="avatar"/>
+      <img *ngIf="!user.avatar"
+           src="https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png"
+           alt="avatar"/>
+    </div>
+    <div class="menu-main-body">
+      <div class="menu-main-body-cards">
+        <div class="menu-main-body-cards-card">
+          <img src="assets/svgs/flash-cards.svg"/>
+          <p>Flash cards</p>
+        </div>
+        <div class="menu-main-body-cards-card">
+          <img src="assets/svgs/signature.svg"/>
+          <p>Writing</p>
+        </div>
+        <div class="menu-main-body-cards-card">
+          <img src="assets/svgs/book.svg"/>
+          <p>Reading</p>
+        </div>
+      </div>
+
+      <div class="menu-main-body-banner">
+        <div class="menu-main-body-banner-header">
+          Ready to learn?
+        </div>
+        <small class="menu-main-body-banner-text">
+          Check free video curses
+        </small>
+        <div class="menu-main-body-banner-info">
+          <div>A1 Lesson 01</div>
+          <div>
+            <RoundedButton width="8.5rem"
+                           height="2.5rem"
+                           text="Join now">
+            </RoundedButton>
+          </div>
+        </div>
+      </div>
+      <div class="menu-main-body-cards">
+        <div class="menu-main-body-cards-bigCard">
+          <div class="menu-main-body-cards-bigCard-image">
+            <img src="assets/svgs/exam.svg"/>
+          </div>
+          <div class="menu-main-body-cards-bigCard-text">
+            <h1>Do a quick test</h1>
+            <p>Check your current level of English</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-main-body-cards">
+        <div class="menu-main-body-cards-bigCard">
+          <div class="menu-main-body-cards-bigCard-image">
+            <img src="assets/svgs/puzzle.svg"/>
+          </div>
+          <div class="menu-main-body-cards-bigCard-text">
+            <h1>Saved words</h1>
+            <p>Learn saved words</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
