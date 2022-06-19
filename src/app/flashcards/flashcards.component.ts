@@ -1,7 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {slideInUpOnEnterAnimation, slideOutDownOnLeaveAnimation} from "angular-animations";
-import {WordDto} from "../dtos";
+import {UserDto, WordDto} from "../dtos";
 import {WordsService} from "../services/words.service";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-flashcards',
@@ -16,15 +18,22 @@ export class FlashcardsComponent implements OnInit {
 
   @ViewChild('card') card: ElementRef;
 
-
+  user: UserDto;
   words: WordDto[] = [];
   selectedWord = {} as WordDto;
   flip = false;
 
-  constructor(private wordsService: WordsService) {
+  constructor(private wordsService: WordsService,
+              private auth: AuthService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.user = this.auth.getCurrentUser();
+    if (!this.user.id) {
+      // this.router.navigate(['/login']);
+      return;
+    }
     this.getRandomWords();
   }
 
@@ -42,13 +51,23 @@ export class FlashcardsComponent implements OnInit {
     }, 1000);
   }
 
+  readWord() {
+    const word = new SpeechSynthesisUtterance(this.selectedWord?.en);
+    speechSynthesis.speak(word);
+  }
+
   private drawWord() {
     const random = Math.floor(Math.random() * 99);
     this.selectedWord = this.words?.[random];
   }
 
   private getRandomWords() {
-    this.wordsService.getRandomWords(100).subscribe((data: WordDto[]) => {
+    const bearer = localStorage.getItem('Auth-Token-EW');
+    if (!bearer) {
+
+      return;
+    }
+    this.wordsService.getRandomWords(100, bearer).subscribe((data: WordDto[]) => {
       this.words = data;
       this.drawWord();
     })

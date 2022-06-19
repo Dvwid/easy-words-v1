@@ -15,9 +15,9 @@ export class WordsService {
               private http: HttpClient) {
   }
 
-  getRandomWords(limit: number): Observable<WordDto[]> {
+  getRandomWords(limit: number, bearer: string): Observable<WordDto[]> {
     return this.http.post<WordDto[]>(`${this.baseUrl}/random`, {
-      bearer: localStorage.getItem('Auth-Token-EW'),
+      bearer,
       limit
     })
   }

@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
             this.router.url === '/register' ||
             this.router.url === '/welcome' ||
             this.router.url === '/') {
-          // this.router.navigate(['/menu']);
+          this.router.navigate(['/menu']);
         }
       },
       () => {
