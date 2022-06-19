@@ -1,0 +1,165 @@
+@import 'material-icons/iconfont/material-icons.css';
+
+.flashcards {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Oleo Script', cursive;
+
+  &-main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    &-header {
+      position: relative;
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+
+      img.arrow {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        z-index: 1;
+        width: 1.5rem;
+        cursor: pointer;
+      }
+    }
+
+    &-body {
+      &-tools {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+        margin-top: 1rem;
+        .icon {
+          width: 8vh;
+          height: 8vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #3A0135;
+          border-radius: .5rem;
+          cursor: pointer;
+          &:hover {
+            background-color: lighten(#3A0135, 5%);
+          }
+          span.material-icons {
+            font-size: 3rem;
+            color: #B8005E;
+          }
+        }
+      }
+    }
+  }
+}
+
+.flip-card-body {
+  display: flex;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.flip-card {
+  color: white;
+  width: 70%;
+  height: 18vh;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flip-card-watched .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: normal;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+
+  .word {
+    align-self: center;
+  }
+}
+
+.flip-card-front {
+  background-color: #B8005E;
+  border-radius: 1.5rem;
+}
+
+.flip-card-back {
+  background-color: #B8005E;
+  border-radius: 1.5rem;
+  transform: rotateY(180deg);
+}
+
+.flip-card-switch {
+  animation: switch 1s ease-in;
+}
+
+.flip-card-answer {
+}
+
+.flip-card-form {
+  display: flex;
+  justify-content: center;
+  margin: 0 1rem;
+}
+
+.flip-card-form mat-form-field {
+  font-size: 1.1rem;
+  width: 75%;
+}
+
+.flip-card-button-wrapper {
+  height: 3.2rem;
+  width: 15%;
+  margin-left: 0.5rem;
+}
+
+.flip-card-button-wrapper button {
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes switch {
+  0% {
+    transition: 1s;
+    transform: rotate(0deg) translateX(0);
+  }
+  38% {
+    transition: 1s;
+    transform: rotate(20deg) translateX(-150%);
+  }
+  50% {
+    transition: 0s;
+    transform: rotate(20deg) translateX(-150%);
+  }
+  50.1% {
+    transition: 1s;
+    transform: rotate(20deg) translateX(150%);
+  }
+  100% {
+    transition: 1s;
+    transform: rotate(0deg) translateX(0);
+  }
+}
+

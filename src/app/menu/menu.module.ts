@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { MenuRoutingModule } from './menu-routing.module';
-import { MenuComponent } from './menu.component';
+import {MenuRoutingModule} from './menu-routing.module';
+import {MenuComponent} from './menu.component';
 import {BackgroundModule} from "../shared/background/background.module";
 import {RoundedButtonModule} from "../shared/rounded-button/rounded-button.module";
 
@@ -18,4 +18,5 @@ import {RoundedButtonModule} from "../shared/rounded-button/rounded-button.modul
     RoundedButtonModule
   ]
 })
-export class MenuModule { }
+export class MenuModule {
+}

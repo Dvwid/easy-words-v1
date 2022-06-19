@@ -1,5 +1,4 @@
 <div class="menu">
-  <app-background></app-background>
   <div class="menu-main" [@enter-main] [@leave-main]>
 
     <div class="menu-main-header">
@@ -8,21 +7,22 @@
            [src]="user.avatar"
            alt="avatar"/>
       <img *ngIf="!user.avatar"
-           src="https://upload.wikimedia.org/wikipedia/commons/f/f4/User_Avatar_2.png"
+           src="https://www.svgrepo.com/show/63321/avatar.svg"
            alt="avatar"/>
     </div>
     <div class="menu-main-body">
       <div class="menu-main-body-cards">
-        <div class="menu-main-body-cards-card">
-          <img src="assets/svgs/flash-cards.svg"/>
+        <div class="menu-main-body-cards-card"
+             routerLink="/flashcards">
+          <img src="assets/svgs/flash-cards.svg" alt="cards"/>
           <p>Flash cards</p>
         </div>
         <div class="menu-main-body-cards-card">
-          <img src="assets/svgs/signature.svg"/>
+          <img src="assets/svgs/signature.svg" alt="signature"/>
           <p>Writing</p>
         </div>
         <div class="menu-main-body-cards-card">
-          <img src="assets/svgs/book.svg"/>
+          <img src="assets/svgs/book.svg" alt="book"/>
           <p>Reading</p>
         </div>
       </div>
@@ -47,7 +47,7 @@
       <div class="menu-main-body-cards">
         <div class="menu-main-body-cards-bigCard">
           <div class="menu-main-body-cards-bigCard-image">
-            <img src="assets/svgs/exam.svg"/>
+            <img src="assets/svgs/exam.svg" alt="exam"/>
           </div>
           <div class="menu-main-body-cards-bigCard-text">
             <h1>Do a quick test</h1>
@@ -59,7 +59,7 @@
       <div class="menu-main-body-cards">
         <div class="menu-main-body-cards-bigCard">
           <div class="menu-main-body-cards-bigCard-image">
-            <img src="assets/svgs/puzzle.svg"/>
+            <img src="assets/svgs/puzzle.svg" alt="words"/>
           </div>
           <div class="menu-main-body-cards-bigCard-text">
             <h1>Saved words</h1>

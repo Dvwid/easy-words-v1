@@ -24,3 +24,9 @@ export interface LoginRequest {
   email: string;
   password: string;
 }
+
+export interface WordDto {
+  en: string;
+  pl: string;
+  de: string;
+}

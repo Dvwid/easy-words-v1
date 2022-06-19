@@ -1,0 +1,52 @@
+<div class="flashcards">
+  <div [@enter-main]
+       [@leave-main]
+       class="flashcards-main">
+    <div class="flashcards-main-header">
+      <img src="assets/svgs/left-arrow.svg"
+           routerLink="/menu"
+           alt="arrow"
+           class="arrow"/>
+    </div>
+    <div class="flashcards-main-body">
+      <div class="flip-card-body">
+        <div [ngClass]="{'flip-card-watched': flip === true}"
+             #card
+             class="flip-card">
+          <div (click)="flipCard()"
+               class="flip-card-inner">
+            <div class="flip-card-front">
+              <span class="word">{{selectedWord?.en}}</span>
+              <span *ngIf="!selectedWord?.en" class="word">
+                <app-spinner></app-spinner>
+              </span>
+            </div>
+            <div class="flip-card-back">
+              <span class="word">{{selectedWord?.pl}}</span>
+              <span *ngIf="!selectedWord?.pl" class="word">
+                <app-spinner></app-spinner>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flashcards-main-body-tools">
+        <div class="icon">
+          <span class="material-icons">save_alt</span>
+        </div>
+        <div class="icon">
+          <span class="material-icons">update</span>
+        </div>
+        <div class="icon">
+          <span class="material-icons">volume_up</span>
+        </div>
+        <div class="icon">
+              <span (click)="callToSwitchCardAnimation()"
+                    class="material-icons">
+                skip_next
+              </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

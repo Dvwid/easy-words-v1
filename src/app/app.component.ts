@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkIsUserLogged()
+    this.checkIsUserLogged();
   }
 
   checkIsUserLogged() {
@@ -25,10 +25,15 @@ export class AppComponent implements OnInit {
     }
     this.auth.verify(jwt).subscribe((user) => {
         this.auth.setCurrentUser({jwt, user});
-        this.router.navigate(['/menu']);
+        if (this.router.url === '/login' ||
+            this.router.url === '/register' ||
+            this.router.url === '/welcome' ||
+            this.router.url === '/') {
+          // this.router.navigate(['/menu']);
+        }
       },
       () => {
         this.router.navigate(['/login']);
-    })
+      })
   }
 }
