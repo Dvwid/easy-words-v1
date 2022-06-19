@@ -31,7 +31,7 @@ export class FlashcardsComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.auth.getCurrentUser();
     if (!this.user.id) {
-      // this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
       return;
     }
     this.getRandomWords();
@@ -52,21 +52,19 @@ export class FlashcardsComponent implements OnInit {
   }
 
   readWord() {
-    const word = new SpeechSynthesisUtterance(this.selectedWord?.en);
-    speechSynthesis.speak(word);
+    const word = new window.SpeechSynthesisUtterance(this.flip ? this.selectedWord?.pl : this.selectedWord?.en);
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(word);
   }
 
   private drawWord() {
     const random = Math.floor(Math.random() * 99);
     this.selectedWord = this.words?.[random];
+    this.flip = false;
   }
 
   private getRandomWords() {
     const bearer = localStorage.getItem('Auth-Token-EW');
-    if (!bearer) {
-
-      return;
-    }
     this.wordsService.getRandomWords(100, bearer).subscribe((data: WordDto[]) => {
       this.words = data;
       this.drawWord();
