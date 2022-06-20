@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 @Injectable()
 export class AuthService implements OnInit {
 
-  private readonly baseUrl = 'http://localhost:3000';
+  private readonly baseUrl = 'https://easy-words-v1.herokuapp.com';
   private currentUser = {} as UserDto;
 
   constructor(private http: HttpClient,

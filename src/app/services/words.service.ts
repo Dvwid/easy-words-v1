@@ -9,7 +9,7 @@ import {WordDto} from "../dtos";
 })
 export class WordsService {
 
-  baseUrl = "http://localhost:3000/words";
+  baseUrl = "https://easy-words-v1.herokuapp.com/words";
 
   constructor(private auth: AuthService,
               private http: HttpClient) {

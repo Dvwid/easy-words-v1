@@ -52,23 +52,24 @@ export class FlashcardsComponent implements OnInit {
   }
 
   readWord() {
-    const word = new window.SpeechSynthesisUtterance(this.flip ? this.selectedWord?.pl : this.selectedWord?.en);
+    const speech = new window.SpeechSynthesisUtterance(this.flip ? this.selectedWord?.pl : this.selectedWord?.en);
+    speech.lang = this.flip ? 'pl-PL' : 'en-US';
     window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(word);
+    window.speechSynthesis.speak(speech);
   }
 
-  private drawWord() {
-    const random = Math.floor(Math.random() * 99);
-    this.selectedWord = this.words?.[random];
-    this.flip = false;
-  }
-
-  private getRandomWords() {
+  getRandomWords() {
     const bearer = localStorage.getItem('Auth-Token-EW');
     this.wordsService.getRandomWords(100, bearer).subscribe((data: WordDto[]) => {
       this.words = data;
       this.drawWord();
     })
+  }
+
+  drawWord() {
+    const random = Math.floor(Math.random() * 99);
+    this.selectedWord = this.words?.[random];
+    this.flip = false;
   }
 
 
